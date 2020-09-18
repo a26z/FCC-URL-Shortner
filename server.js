@@ -13,7 +13,7 @@ const DB_URI = require('./db-uri/db_uri.js');
 // Basic Configuration
 const PORT = process.env.PORT || 3000;
 const ROOT_URL = process.env.ROOT_URL || `http://localhost:${PORT}`;
-const BASE_URL = process.env.BASE_URL || 'http://localhost:'+PORT+'/api/shorturl';
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}/api/shorturl`;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({
