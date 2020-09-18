@@ -11,10 +11,9 @@ const cors = require('cors');
 const DB_URI = require('./db-uri/db_uri.js');
 
 // Basic Configuration
-// const DB = process.env.MONGO_URI || 'mongodb+srv://<user>:<pw>@fcc-cluster.repma.mongodb.net/<db>?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || 'http://localhost:'+PORT+'/api/short';
-// const BASE_URL = process.env.BASE_URL || 'https://FCC-project-urlshortener.chsq2206.repl.co/api/short';
+const ROOT_URL = process.env.ROOT_URL || `http://localhost:${PORT}`;
+const BASE_URL = process.env.BASE_URL || 'http://localhost:'+PORT+'/api/shorturl';
 
 app.use(cors());
 app.use(bodyParser.urlencoded({
@@ -48,7 +47,6 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
-
 
 // POST endpoint
 app.post("/api/shorturl/new", async function(req, res){
@@ -96,5 +94,5 @@ app.get("/api/shorturl/:shortUrl", async function(req, res){
 
 
 app.listen(PORT, function () {
-  console.log('Node.js listening ...');
+  console.log(`Node.js listening on port ${PORT}... -------> ${ROOT_URL}`);
 });
